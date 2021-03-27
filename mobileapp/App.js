@@ -1,5 +1,6 @@
 import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
+import { StatusBar } from 'expo-status-bar';
 import { NavigationContainer } from '@react-navigation/native';
 import { createDrawerNavigator } from '@react-navigation/drawer';
 import { Auth } from './screens/Auth';
@@ -18,9 +19,12 @@ function AppDrawer() {
 
 export default function App() {
   return (
-    <NavigationContainer>
-      <AppDrawer />
-    </NavigationContainer>
+    <>
+      <StatusBar backgroundColor="#97BA1E" />
+      <NavigationContainer>
+        <AppDrawer />
+      </NavigationContainer>
+    </>
   );
 }
 
