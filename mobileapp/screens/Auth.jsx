@@ -1,38 +1,35 @@
-import React from 'react';
-import { Text, View, StyleSheet, Button } from 'react-native';
-import { useNavigation } from '@react-navigation/native';
+import React from "react";
+import { View, StyleSheet, Button } from "react-native";
+import { Text } from "../components/Themed"
+import { useNavigation } from "@react-navigation/native";
 
 const Auth = () => {
   const navigation = useNavigation();
 
   return (
       <View style={styles.container}>
-        <Text style={styles.textSF}>Auth</Text>
+        <Text>Auth</Text>
         <Button title="Press"
-          onPress={() => navigation.navigate('Main')}
+                onPress={() => navigation.navigate("Main")}
         />
-        <Button title="RouteDetails"
-                onPress={() => navigation.navigate('RouteDetails')}
+        <Button title="RoutesListStackNavigation"
+                onPress={() => navigation.navigate("RoutesListStackNavigation")}
         />
+          <Button title="FeedScreen"
+                  onPress={() => navigation.navigate("FeedScreen")}
+          />
   </View>);
 }
 
 const styles = StyleSheet.create({
   container: {
+    alignItems: "center",
+    backgroundColor: "#fff",
     flex: 1,
-    width: '100%',
-    marginHorizontal: 'auto',
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-  text: {
-    color: 'black',
-  },
-  textSF: {
-    color: 'black',
-    fontFamily: 'SFProDisplayBold'
-  },
+    justifyContent: "center",
+    marginHorizontal: "auto",
+    width: "100%",
+  }
 });
 
 export { Auth };

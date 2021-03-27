@@ -5,22 +5,22 @@ import Dimensions from "react-native-web/src/exports/Dimensions";
 
 const styles = StyleSheet.create({
     container: {
-        fontFamily: "SFProDisplayBold",
-        marginTop: 30,
+        alignItems: "baseline",
         flexDirection: "row",
-        alignItems: 'baseline',
+        fontFamily: "SFProDisplayBold",
+        justifyContent: "space-between",
+        marginTop: 30,
         padding: 10,
-        width: Dimensions.get("window").width,
-        justifyContent: "space-between"
+        width: Dimensions.get("window").width
     },
     text: {
+        alignItems: "center",
+        display: "flex",
         fontFamily: "SFProDisplayBold",
+        fontSize: 30,
         fontStyle: "normal",
         fontWeight: "600",
-        fontSize: 30,
         lineHeight: 38,
-        display: "flex",
-        alignItems: "center",
     },
 });
 

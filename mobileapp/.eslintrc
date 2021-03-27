@@ -12,6 +12,8 @@
   "plugins": ["react", "react-native"],
   "extends": ["eslint:recommended", "plugin:react/recommended"],
   "rules": {
+    "quotes": ["error", "double", { "avoidEscape": true }],
+    "react/prop-types": 0,
     "object-curly-spacing": ["error", "always"],
     "react-native/no-unused-styles": 2,
     "react-native/split-platform-components": 2,

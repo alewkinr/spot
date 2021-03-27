@@ -22,11 +22,11 @@ const N20 = "#F6F8FC";
 
 const Colors = {
     light: {
-        text: N60,
+        text: N900,
         background: G600
     },
     dark: {
-        text: N900,
+        text: N60,
     },
 };
 
