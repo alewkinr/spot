@@ -1,5 +1,5 @@
 import React from 'react';
-import { Text, View, StyleSheet, Button } from 'react-native';
+import { Text, View, StyleSheet, Button, useWindowDimensions, Dimensions } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 
 const Main = () => {
@@ -15,12 +15,11 @@ const Main = () => {
 
 const styles = StyleSheet.create({
   container: {
+    minHeight: Math.round(Dimensions.get('window').height),
+    paddingTop: 40,
     flex: 1,
-    width: '100%',
-    marginHorizontal: 'auto',
     backgroundColor: '#fff',
     alignItems: 'center',
-    justifyContent: 'center',
   },
   text: {
     color: 'black',
