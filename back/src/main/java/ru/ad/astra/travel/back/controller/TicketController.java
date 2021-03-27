@@ -9,7 +9,6 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import ru.ad.astra.travel.back.model.TicketDto;
-import ru.ad.astra.travel.back.model.UserDto;
 import ru.ad.astra.travel.back.service.TicketService;
 
 import java.util.List;
@@ -32,7 +31,7 @@ public class TicketController {
     }
 
     @GetMapping("/user/{userId}")
-    public ResponseEntity<List<TicketDto>> getByUser(@PathVariable Long userId){
+    public ResponseEntity<List<TicketDto>> getByUser(@PathVariable Long userId) {
         return ResponseEntity.ok(ticketService.getByUserId(userId));
     }
 

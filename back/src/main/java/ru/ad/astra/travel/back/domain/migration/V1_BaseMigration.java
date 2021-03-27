@@ -6,6 +6,8 @@ import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
 import ru.ad.astra.travel.back.domain.model.*;
 import ru.ad.astra.travel.back.domain.repository.*;
+import ru.ad.astra.travel.back.model.request.CreateChatRequest;
+import ru.ad.astra.travel.back.service.ChatService;
 
 import java.math.BigDecimal;
 import java.time.LocalDate;
@@ -24,6 +26,7 @@ public class V1_BaseMigration implements Migration {
     private final CommentRepository commentRepository;
     private final LikeRepository likeRepository;
     private final TagsRepository tagsRepository;
+    private final ChatService chatService;
 
     @Override
     public String getId() {
@@ -37,6 +40,14 @@ public class V1_BaseMigration implements Migration {
         tickets();
         posts();
         tags();
+        chats();
+    }
+
+    private void chats() {
+        chatService.createChat(new CreateChatRequest(new HashSet<>() {{
+            add(1L);
+            add(2L);
+        }}, "link"));
     }
 
     private void tags() {
@@ -101,12 +112,12 @@ public class V1_BaseMigration implements Migration {
 
     private void users() {
         userRepository.save(new UserEntity("admin",
-                new ProfileEntity("Admin", "", Gender.NONE, LocalDate.now(), false),
+                new ProfileEntity("Admin", "", Gender.NONE, LocalDate.now(), false, "pers_chat"),
                 new HashSet<>(), new HashSet<>())
         );
         IntStream.range(1, 100).forEach(i -> {
             userRepository.save(new UserEntity("user" + i,
-                    new ProfileEntity("name", "lastName", Gender.NONE, LocalDate.now(), false),
+                    new ProfileEntity("name", "lastName", Gender.NONE, LocalDate.now(), false, "pc"),
                     new HashSet<>(), new HashSet<>()));
         });
     }

@@ -23,4 +23,6 @@ public class ProfileDto {
     private LocalDate birthDate;
 
     private Boolean isPublic;
+
+    private String personalChatLink;
 }
