@@ -36,8 +36,7 @@ const Main = () => {
         alignSelf: "flex-start",
         backgroundColor: "#ECEFF5",
         flexDirection: "column",
-        marginTop: 10,
-        marginBottom: 30,
+        marginVertical: 20,
         width: "100%",
       },
       containerText: {
