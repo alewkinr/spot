@@ -8,6 +8,7 @@
     "eject": "expo eject"
   },
   "dependencies": {
+    "@react-navigation/drawer": "^5.12.4",
     "@react-navigation/stack": "^5.14.3",
     "@ui-kitten/components": "^5.0.0",
     "axios": "^0.21.1",
