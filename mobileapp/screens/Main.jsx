@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { View, SafeAreaView, StyleSheet, Text, Dimensions } from "react-native";
+import { View, SafeAreaView, Image, StyleSheet, Text, Dimensions } from "react-native";
 import { useNavigation } from "@react-navigation/native";
 import { ScrollView } from "react-native-gesture-handler";
 import { CircledText } from "../components/CircledText";
@@ -33,26 +33,36 @@ const Main = () => {
   const ThemeCard = ({ name, desc, emoji, ...props }) => {
     const styles = StyleSheet.create({
       container: {
-        marginTop: 10,
-        flexDirection: "column",
-        width: "100%",
+        alignSelf: "flex-start",
         backgroundColor: "#ECEFF5",
-        alignSelf: 'flex-start',
-      },
-      containerTitle: {
-        flexDirection: "row",
+        flexDirection: "column",
+        marginTop: 10,
         width: "100%",
       },
       containerText: {
         marginTop: 4,
       },
-      titleText: {
-        fontSize: 18,
+      containerTitle: {
+        flexDirection: "row",
+        width: "100%",
+      },
+      containerImages: {
+        marginTop: 20,
+        marginBottom: 45,
+      },
+      image: {
+        height: 280, 
+        marginRight: 15,
+        resizeMode: "cover", 
+        width: 150,
       },
       subTitleText: {
-        color: '#9BA2AE',
+        color: "#9BA2AE",
         fontSize: 15,
-      }, 
+      },
+      titleText: {
+        fontSize: 18,
+      }
     });
 
     return (
@@ -64,10 +74,13 @@ const Main = () => {
             <Text style={styles.subTitleText}>популярные {desc}</Text>
           </View>
         </View>
-        <View>
-          <Text>Card1</Text>
-          <Text>Card2</Text>
-        </View>
+        <ScrollView style={styles.containerImages} horizontal>
+          { 
+            Array(12).fill(null).map((_, index) => <Image key={index} style={styles.image}
+              source={{ uri: "https://picsum.photos/600/300" 
+            }} />
+          )}
+        </ScrollView>
         <Divider />
       </View>
     );
@@ -79,7 +92,7 @@ const Main = () => {
 
   return (
     <SafeAreaView style={styles.container}>
-      <Text style={{ alignSelf: 'center' }}>Main</Text>
+      <Text style={{ alignSelf: "center" }}>Main</Text>
       <ScrollView style={styles.scrollViewContainer}>
         {WithRecomendations}
       </ScrollView>
@@ -95,7 +108,7 @@ const styles = StyleSheet.create({
     paddingTop: 40,
   },
   scrollViewContainer: {
-    paddingHorizontal: 10,
+    paddingHorizontal: 20,
   }
 });
 
