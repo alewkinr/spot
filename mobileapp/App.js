@@ -19,12 +19,12 @@ function AppDrawer() {
 
 export default function App() {
   return (
-    <git >
+    <>
       <StatusBar backgroundColor="#97BA1E" />
       <NavigationContainer>
         <AppDrawer />
       </NavigationContainer>
-    </git>
+    </>
   );
 }
 
