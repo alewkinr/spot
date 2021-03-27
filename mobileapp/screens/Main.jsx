@@ -1,5 +1,6 @@
 import React, { useState } from "react";
-import { View, SafeAreaView, StyleSheet, Text, Dimensions } from "react-native";
+import { View, TouchableOpacity, SafeAreaView, Image, StyleSheet, Text, Dimensions } from "react-native";
+import RightChevron from '../components/svg/RightChevron';
 import { useNavigation } from "@react-navigation/native";
 import { ScrollView } from "react-native-gesture-handler";
 import { CircledText } from "../components/CircledText";
@@ -33,41 +34,71 @@ const Main = () => {
   const ThemeCard = ({ name, desc, emoji, ...props }) => {
     const styles = StyleSheet.create({
       container: {
-        marginTop: 10,
-        flexDirection: "column",
-        width: "100%",
+        alignSelf: "flex-start",
         backgroundColor: "#ECEFF5",
-        alignSelf: 'flex-start',
-      },
-      containerTitle: {
-        flexDirection: "row",
+        flexDirection: "column",
+        marginVertical: 20,
         width: "100%",
       },
       containerText: {
         marginTop: 4,
       },
-      titleText: {
-        fontSize: 18,
+      containerTitle: {
+        flexDirection: "row",
+        width: "100%",
+      },
+      containerTitleAndText: {
+        flexDirection: "row",
+        width: "100%",
+      },
+      chevron: {
+        height: 15,
+        right: 16,
+        top: 15,
+        width: 15,
+      },
+      containerImages: {
+        marginTop: 20,
+        marginBottom: 45,
+      },
+      image: {
+        height: 240, 
+        marginRight: 15,
+        resizeMode: "cover", 
+        width: 140,
       },
       subTitleText: {
-        color: '#9BA2AE',
+        color: "#9BA2AE",
         fontSize: 15,
-      }, 
+      },
+      titleText: {
+        fontSize: 18,
+      }
     });
+
+    const onPress = () => {
+      console.log("Pressed");
+    }
 
     return (
       <View style={styles.container} {...props}>
-        <View style={styles.containerTitle}>
-          <CircledText>{emoji}</CircledText>
-          <View style={styles.containerText}>
-            <Text style={styles.titleText}>{name}</Text>
-            <Text style={styles.subTitleText}>популярные {desc}</Text>
+        <TouchableOpacity onPress={onPress} style={styles.containerTitle}>
+          <View style={styles.containerTitleAndText}>
+            <CircledText>{emoji}</CircledText>
+            <View style={styles.containerText}>
+              <Text style={styles.titleText}>{name}</Text>
+              <Text style={styles.subTitleText}>популярные {desc}</Text>
+            </View>
           </View>
-        </View>
-        <View>
-          <Text>Card1</Text>
-          <Text>Card2</Text>
-        </View>
+          <RightChevron style={styles.chevron} />
+        </TouchableOpacity>
+        <ScrollView style={styles.containerImages} horizontal>
+          { 
+            Array(12).fill(null).map((_, index) => <Image key={index} style={styles.image}
+              source={{ uri: "https://picsum.photos/500/300" 
+            }} />
+          )}
+        </ScrollView>
         <Divider />
       </View>
     );
@@ -79,7 +110,7 @@ const Main = () => {
 
   return (
     <SafeAreaView style={styles.container}>
-      <Text style={{ alignSelf: 'center' }}>Main</Text>
+      <Text style={{ alignSelf: "center" }}>Main</Text>
       <ScrollView style={styles.scrollViewContainer}>
         {WithRecomendations}
       </ScrollView>
@@ -95,7 +126,7 @@ const styles = StyleSheet.create({
     paddingTop: 40,
   },
   scrollViewContainer: {
-    paddingHorizontal: 10,
+    paddingHorizontal: 20,
   }
 });
 
