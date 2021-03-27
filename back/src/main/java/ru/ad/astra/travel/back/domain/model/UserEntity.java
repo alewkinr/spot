@@ -1,15 +1,13 @@
 package ru.ad.astra.travel.back.domain.model;
 
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.EqualsAndHashCode;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import javax.persistence.*;
 import java.util.HashSet;
 import java.util.Set;
 
-@EqualsAndHashCode(callSuper = true)
+@ToString(exclude = {"posts", "tickets"})
+@EqualsAndHashCode(callSuper = true, exclude = {"posts", "tickets"})
 @NoArgsConstructor
 @AllArgsConstructor
 @Data

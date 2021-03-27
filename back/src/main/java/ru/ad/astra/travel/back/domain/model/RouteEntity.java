@@ -7,8 +7,8 @@ import java.math.BigDecimal;
 import java.util.HashSet;
 import java.util.Set;
 
-@ToString
-@EqualsAndHashCode(callSuper = true)
+@ToString(exclude = {"posts", "tags"})
+@EqualsAndHashCode(callSuper = true, exclude = {"posts", "tags"})
 @NoArgsConstructor
 @AllArgsConstructor
 @Data
@@ -38,4 +38,6 @@ public class RouteEntity extends BaseEntity<Long> {
     @OneToMany(mappedBy = "route", cascade = CascadeType.ALL)
     private Set<PostEntity> posts = new HashSet<>();
 
+    @OneToMany(mappedBy = "route", cascade = CascadeType.ALL)
+    private Set<TagEntity> tags = new HashSet<>();
 }

@@ -13,6 +13,8 @@ import java.util.Map;
 @Data
 public class TicketDto {
 
+    private Long id;
+
     private TicketType type;
 
     private BigDecimal price;

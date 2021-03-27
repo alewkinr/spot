@@ -23,4 +23,8 @@ public class TagEntity extends BaseEntity<Long> {
 
     @ManyToMany(cascade = CascadeType.ALL)
     private Set<TagEntity> path = new HashSet<>();
+
+    @ManyToOne
+    @JoinColumn(name = "route_id", nullable = false)
+    private RouteEntity route;
 }

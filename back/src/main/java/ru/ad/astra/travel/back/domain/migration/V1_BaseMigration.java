@@ -22,6 +22,7 @@ public class V1_BaseMigration implements Migration {
     private final RoutesRepository routesRepository;
     private final PostsRepository postsRepository;
     private final CommentRepository commentRepository;
+    private final LikeRepository likeRepository;
 
     @Override
     public String getId() {
@@ -46,6 +47,9 @@ public class V1_BaseMigration implements Migration {
                 CommentEntity commentEntity = new CommentEntity(UUID.randomUUID().toString() + " comment", userEntity, saved);
                 commentRepository.save(commentEntity);
             });
+
+            LikeEntity likeEntity = new LikeEntity(userEntity, saved);
+            likeRepository.save(likeEntity);
         });
         userRepository.save(userEntity);
     }
@@ -66,7 +70,7 @@ public class V1_BaseMigration implements Migration {
     private void routes() {
         IntStream.range(1, 10).forEach(i -> {
             RouteEntity saved = routesRepository.save(new RouteEntity("Route " + i, "Long-long-long desc", 0., 0., BigDecimal.ZERO,
-                    new HashSet<>(), new HashSet<>()
+                    new HashSet<>(), new HashSet<>(), new HashSet<>()
             ));
 
             saved.getSpots().addAll(new HashSet<>(Arrays.asList(

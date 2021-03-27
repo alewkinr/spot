@@ -1,5 +1,5 @@
 server:
-  port: 8080
+  port: 9292
 
 # swagger-ui custom path
 springdoc.swagger-ui.path: /swagger-ui.html

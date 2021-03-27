@@ -6,8 +6,8 @@ import javax.persistence.*;
 import java.util.HashSet;
 import java.util.Set;
 
-@ToString(exclude = {"author", "route"})
-@EqualsAndHashCode(callSuper = true, exclude = {"author", "route"})
+@ToString(exclude = {"comments", "likes"})
+@EqualsAndHashCode(callSuper = true, exclude = {"comments", "likes"})
 @NoArgsConstructor
 @AllArgsConstructor
 @Data
