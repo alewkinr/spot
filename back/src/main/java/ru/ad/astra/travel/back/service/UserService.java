@@ -20,4 +20,8 @@ public class UserService {
     public Page<UserDto> getAllUsers(Pageable pageable) {
         return userRepository.findAll(pageable).map(userEntity -> modelMapper.map(userEntity, UserDto.class));
     }
+
+    public UserDto getById(Long userId) {
+        return modelMapper.map(userRepository.findById(userId).orElseThrow(), UserDto.class);
+    }
 }

@@ -23,6 +23,7 @@ public class V1_BaseMigration implements Migration {
     private final PostsRepository postsRepository;
     private final CommentRepository commentRepository;
     private final LikeRepository likeRepository;
+    private final TagsRepository tagsRepository;
 
     @Override
     public String getId() {
@@ -35,6 +36,22 @@ public class V1_BaseMigration implements Migration {
         routes();
         tickets();
         posts();
+        tags();
+    }
+
+    private void tags() {
+        Iterator<RouteEntity> iterator = routesRepository.findAll().iterator();
+        TagEntity prev = null;
+        if (iterator.hasNext()) {
+            RouteEntity route = iterator.next();
+            for (int index = 0; index < 7; index++) {
+                HashSet<TagEntity> tagEntities = new HashSet<>();
+                if (prev != null) {
+                    tagEntities.add(prev);
+                }
+                prev = tagsRepository.save(new TagEntity("TEST tag" + index, 0f, tagEntities, route));
+            }
+        }
     }
 
     private void posts() {

@@ -20,4 +20,8 @@ public class RoutesService {
     public Page<RouteDto> getAllUsers(Pageable pageable) {
         return routesRepository.findAll(pageable).map(routeEntity -> modelMapper.map(routeEntity, RouteDto.class));
     }
+
+    public RouteDto getById(Long routeId) {
+        return modelMapper.map(routesRepository.findById(routeId).orElseThrow(), RouteDto.class);
+    }
 }

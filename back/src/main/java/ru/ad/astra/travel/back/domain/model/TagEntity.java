@@ -6,8 +6,8 @@ import javax.persistence.*;
 import java.util.HashSet;
 import java.util.Set;
 
-@ToString
-@EqualsAndHashCode(callSuper = true)
+@ToString(exclude = "path")
+@EqualsAndHashCode(callSuper = true, exclude = "path")
 @NoArgsConstructor
 @AllArgsConstructor
 @Data

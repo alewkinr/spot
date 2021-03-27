@@ -8,23 +8,24 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-import ru.ad.astra.travel.back.model.RouteDto;
-import ru.ad.astra.travel.back.service.RoutesService;
+import ru.ad.astra.travel.back.model.TagDto;
+import ru.ad.astra.travel.back.model.UserDto;
+import ru.ad.astra.travel.back.service.TagsService;
 
 @RequiredArgsConstructor
 @RestController
-@RequestMapping("/routes")
-public class RoutesController {
+@RequestMapping("/tags")
+public class TagsController {
 
-    private final RoutesService routesService;
+    private final TagsService tagService;
 
     @GetMapping
-    public ResponseEntity<Page<RouteDto>> getAllRoutes(Pageable pageable) {
-        return ResponseEntity.ok(routesService.getAllUsers(pageable));
+    public ResponseEntity<Page<TagDto>> getAll(Pageable pageable) {
+        return ResponseEntity.ok(tagService.getAll(pageable));
     }
 
-    @GetMapping("/{routeId}")
-    public ResponseEntity<RouteDto> getRoute(@PathVariable Long routeId) {
-        return ResponseEntity.ok(routesService.getById(routeId));
+    @GetMapping("/{tagId}")
+    public ResponseEntity<TagDto> getTag(@PathVariable Long tagId) {
+        return ResponseEntity.ok(tagService.getById(tagId));
     }
 }
