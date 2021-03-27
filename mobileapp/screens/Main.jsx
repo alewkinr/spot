@@ -52,20 +52,20 @@ const Main = () => {
         width: "100%",
       },
       chevron: {
-        top: 15,
-        right: 16,
-        width: 15,
         height: 15,
+        right: 16,
+        top: 15,
+        width: 15,
       },
       containerImages: {
         marginTop: 20,
         marginBottom: 45,
       },
       image: {
-        height: 280, 
+        height: 240, 
         marginRight: 15,
         resizeMode: "cover", 
-        width: 150,
+        width: 140,
       },
       subTitleText: {
         color: "#9BA2AE",
@@ -95,7 +95,7 @@ const Main = () => {
         <ScrollView style={styles.containerImages} horizontal>
           { 
             Array(12).fill(null).map((_, index) => <Image key={index} style={styles.image}
-              source={{ uri: "https://picsum.photos/600/300" 
+              source={{ uri: "https://picsum.photos/500/300" 
             }} />
           )}
         </ScrollView>
