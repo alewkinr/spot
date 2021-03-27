@@ -4,6 +4,15 @@ server:
 # swagger-ui custom path
 springdoc.swagger-ui.path: /swagger-ui.html
 
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health, info, shutdown
+  endpoint:
+    shutdown:
+      enabled: true
+
 spring:
   datasource:
     hikari:
