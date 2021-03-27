@@ -9,6 +9,9 @@ import AppLoading from "expo-app-loading";
 import { RouteDetails } from "./screens/RouteDetails";
 import Colors from "./constants/Colors";
 import {FeedScreen} from "./screens/FeedSceen";
+import * as eva from '@eva-design/eva';
+import Colors from "./constants/Colors";
+import {ApplicationProvider} from "@ui-kitten/components";
 
 const Drawer = createDrawerNavigator();
 
@@ -28,12 +31,12 @@ export default function App() {
 
     if (isLoadingComplete) {
         return (
-            <>
-            <StatusBar backgroundColor={Colors.light.background} />
-            <NavigationContainer>
-                <AppDrawer/>
-            </NavigationContainer>
-            </>
+            <ApplicationProvider {...eva} theme={eva.light}>
+                <StatusBar backgroundColor={Colors.light.background}/>
+                <NavigationContainer>
+                    <AppDrawer/>
+                </NavigationContainer>
+            </ApplicationProvider>
         );
     }
 
