@@ -1,5 +1,6 @@
 import React, { useState } from "react";
-import { View, SafeAreaView, Image, StyleSheet, Text, Dimensions } from "react-native";
+import { View, TouchableOpacity, SafeAreaView, Image, StyleSheet, Text, Dimensions } from "react-native";
+import RightChevron from '../components/svg/RightChevron';
 import { useNavigation } from "@react-navigation/native";
 import { ScrollView } from "react-native-gesture-handler";
 import { CircledText } from "../components/CircledText";
@@ -46,6 +47,16 @@ const Main = () => {
         flexDirection: "row",
         width: "100%",
       },
+      containerTitleAndText: {
+        flexDirection: "row",
+        width: "100%",
+      },
+      chevron: {
+        top: 15,
+        right: 16,
+        width: 15,
+        height: 15,
+      },
       containerImages: {
         marginTop: 20,
         marginBottom: 45,
@@ -65,15 +76,22 @@ const Main = () => {
       }
     });
 
+    const onPress = () => {
+      console.log("Pressed");
+    }
+
     return (
       <View style={styles.container} {...props}>
-        <View style={styles.containerTitle}>
-          <CircledText>{emoji}</CircledText>
-          <View style={styles.containerText}>
-            <Text style={styles.titleText}>{name}</Text>
-            <Text style={styles.subTitleText}>популярные {desc}</Text>
+        <TouchableOpacity onPress={onPress} style={styles.containerTitle}>
+          <View style={styles.containerTitleAndText}>
+            <CircledText>{emoji}</CircledText>
+            <View style={styles.containerText}>
+              <Text style={styles.titleText}>{name}</Text>
+              <Text style={styles.subTitleText}>популярные {desc}</Text>
+            </View>
           </View>
-        </View>
+          <RightChevron style={styles.chevron} />
+        </TouchableOpacity>
         <ScrollView style={styles.containerImages} horizontal>
           { 
             Array(12).fill(null).map((_, index) => <Image key={index} style={styles.image}
