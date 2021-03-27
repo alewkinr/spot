@@ -38,6 +38,6 @@ public class RouteEntity extends BaseEntity<Long> {
     @OneToMany(mappedBy = "route", cascade = CascadeType.ALL)
     private Set<PostEntity> posts = new HashSet<>();
 
-    @OneToMany(mappedBy = "route", cascade = CascadeType.ALL)
+    @ManyToMany
     private Set<TagEntity> tags = new HashSet<>();
 }

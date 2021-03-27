@@ -6,8 +6,8 @@ import javax.persistence.*;
 import java.util.HashSet;
 import java.util.Set;
 
-@ToString(exclude = "path")
-@EqualsAndHashCode(callSuper = true, exclude = "path")
+@ToString(exclude = {"path", "routes"})
+@EqualsAndHashCode(callSuper = true, exclude = {"path", "routes"})
 @NoArgsConstructor
 @AllArgsConstructor
 @Data
@@ -24,7 +24,6 @@ public class TagEntity extends BaseEntity<Long> {
     @ManyToMany(cascade = CascadeType.ALL)
     private Set<TagEntity> path = new HashSet<>();
 
-    @ManyToOne
-    @JoinColumn(name = "route_id", nullable = false)
-    private RouteEntity route;
+    @ManyToMany
+    private Set<RouteEntity> routes;
 }

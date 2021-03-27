@@ -25,4 +25,6 @@ public class RouteDto {
     private BigDecimal price;
 
     private List<SpotDto> spots;
+
+    private List<TagDto> tags;
 }

@@ -49,7 +49,9 @@ public class V1_BaseMigration implements Migration {
                 if (prev != null) {
                     tagEntities.add(prev);
                 }
-                prev = tagsRepository.save(new TagEntity("TEST tag" + index, 0f, tagEntities, route));
+                HashSet<RouteEntity> routes = new HashSet<>();
+                routes.add(route);
+                prev = tagsRepository.save(new TagEntity("TEST tag" + index, 0f, tagEntities, routes));
             }
         }
     }

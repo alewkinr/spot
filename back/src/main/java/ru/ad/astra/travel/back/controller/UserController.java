@@ -27,4 +27,9 @@ public class UserController {
     public ResponseEntity<UserDto> getUser(@PathVariable Long userId) {
         return ResponseEntity.ok(userService.getById(userId));
     }
+
+    @GetMapping("/post/{postId}")
+    public ResponseEntity<UserDto> getUserByPost(@PathVariable Long postId) {
+        return ResponseEntity.ok(userService.getByPostId(postId));
+    }
 }

@@ -11,6 +11,8 @@ import org.springframework.web.bind.annotation.RestController;
 import ru.ad.astra.travel.back.model.RouteDto;
 import ru.ad.astra.travel.back.service.RoutesService;
 
+import java.util.List;
+
 @RequiredArgsConstructor
 @RestController
 @RequestMapping("/routes")
@@ -26,5 +28,10 @@ public class RoutesController {
     @GetMapping("/{routeId}")
     public ResponseEntity<RouteDto> getRoute(@PathVariable Long routeId) {
         return ResponseEntity.ok(routesService.getById(routeId));
+    }
+
+    @GetMapping("tags/{tagId}")
+    public ResponseEntity<List<RouteDto>> getRouteByTag(@PathVariable Long tagId) {
+        return ResponseEntity.ok(routesService.getByTagId(tagId));
     }
 }
