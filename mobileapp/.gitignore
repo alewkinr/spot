@@ -1,5 +1,7 @@
-node_modules/**/*
+node_modules/
+package-lock.json
 .expo/*
+.expo-shared/
 npm-debug.*
 *.jks
 *.p8
@@ -9,8 +11,6 @@ npm-debug.*
 *.orig.*
 web-build/
 
-# macOS
-.DS_Store
 
 # Created by .ignore support plugin (hsz.mobi)
 ### Vue template
