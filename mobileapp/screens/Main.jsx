@@ -37,6 +37,7 @@ const Main = () => {
         backgroundColor: "#ECEFF5",
         flexDirection: "column",
         marginTop: 10,
+        marginBottom: 30,
         width: "100%",
       },
       containerText: {
