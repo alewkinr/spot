@@ -1,13 +1,13 @@
 import React from 'react';
-import {NavigationContainer} from '@react-navigation/native';
-import {createDrawerNavigator} from '@react-navigation/drawer';
+import { NavigationContainer } from '@react-navigation/native';
+import { createDrawerNavigator } from '@react-navigation/drawer';
 import { StatusBar } from 'expo-status-bar';
-import {Auth} from './screens/Auth';
-import {Main} from './screens/Main';
+import { Auth } from './screens/Auth';
+import { Main } from './screens/Main';
 import useCachedResources from "./hooks/useCacheResources";
 import AppLoading from "expo-app-loading";
 import { RouteDetails } from "./screens/RouteDetails";
-
+import Colors from "./constants/Colors";
 const Drawer = createDrawerNavigator();
 
 function AppDrawer() {
@@ -26,7 +26,7 @@ export default function App() {
     if (isLoadingComplete) {
         return (
             <>
-            <StatusBar backgroundColor="#97BA1E" />
+            <StatusBar backgroundColor={Colors.light.background} />
             <NavigationContainer>
                 <AppDrawer/>
             </NavigationContainer>
