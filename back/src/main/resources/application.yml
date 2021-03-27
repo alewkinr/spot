@@ -1,0 +1,26 @@
+server:
+  port: 8080
+
+# swagger-ui custom path
+springdoc.swagger-ui.path: /swagger-ui.html
+
+spring:
+  datasource:
+    hikari:
+      connectionTimeout: 20000
+      maximumPoolSize: 5
+    driver-class-name: org.h2.Driver
+    url: jdbc:h2:mem:testdb
+    username: postgres
+    password: root
+  jpa:
+    database-platform: org.hibernate.dialect.H2Dialect
+    hibernate:
+      ddl-auto: update
+    open-in-view: false
+  liquibase:
+    enabled: false
+
+format:
+  local-date-time: yyyy-MM-dd HH:mm:ss
+  local-date: dd-MM-yyyy
