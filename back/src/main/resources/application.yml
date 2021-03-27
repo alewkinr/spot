@@ -36,3 +36,6 @@ format:
 
 photostorage:
   location: filestorage
+
+damerau:
+  boundary: 3

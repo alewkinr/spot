@@ -1,4 +1,4 @@
-package ru.ad.astra.travel.back.model;
+package ru.ad.astra.travel.back.model.request;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -11,9 +11,7 @@ import java.util.Set;
 @NoArgsConstructor
 @AllArgsConstructor
 @Data
-public class TagDto {
-
-    private Long id;
+public class TagRequest {
 
     private String name;
 
@@ -22,4 +20,5 @@ public class TagDto {
     private Set<Long> path = new HashSet<>();
 
     private List<Long> routes;
+
 }
