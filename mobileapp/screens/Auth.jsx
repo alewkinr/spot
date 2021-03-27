@@ -7,15 +7,13 @@ const Auth = () => {
 
   return (
       <View style={styles.container}>
-    <Text style={styles.text}>Auth</Text>
-    <Button title="Press"
-    <Text style={styles.textSF}>Auth</Text>
-    <Button title="Press"
-      onPress={() => navigation.navigate('Main')}
-    />
-    <Button title="RouteDetails"
-            onPress={() => navigation.navigate('RouteDetails')}
-    />
+        <Text style={styles.textSF}>Auth</Text>
+        <Button title="Press"
+          onPress={() => navigation.navigate('Main')}
+        />
+        <Button title="RouteDetails"
+                onPress={() => navigation.navigate('RouteDetails')}
+        />
   </View>);
 }
 

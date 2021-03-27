@@ -1,9 +1,10 @@
 import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
-import { NavigationContainer } from '@react-navigation/native';
-import { createDrawerNavigator } from '@react-navigation/drawer';
-import { Auth } from './screens/Auth';
-import { Main } from './screens/Main';
+import {NavigationContainer} from '@react-navigation/native';
+import {createDrawerNavigator} from '@react-navigation/drawer';
+import {Auth} from './screens/Auth';
+import {Main} from './screens/Main';
+import useCachedResources from "./hooks/useCacheResources";
+import AppLoading from "expo-app-loading";
 import { RouteDetails } from "./screens/RouteDetails";
 
 const Drawer = createDrawerNavigator();
@@ -21,23 +22,15 @@ function AppDrawer() {
 export default function App() {
     const isLoadingComplete = useCachedResources();
 
-
-    if (!isLoadingComplete) {
-        return <AppLoading/>;
-    } else {
+    if (isLoadingComplete) {
         return (
             <NavigationContainer>
                 <AppDrawer/>
             </NavigationContainer>
         );
     }
-}
 
-const styles = StyleSheet.create({
-    container: {
-        flex: 1,
-        backgroundColor: '#fff',
-        alignItems: 'center',
-        justifyContent: 'center',
-    },
-});
+    if (!isLoadingComplete) {
+        return <AppLoading/>;
+    }
+}
