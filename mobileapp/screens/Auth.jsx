@@ -5,11 +5,15 @@ import { useNavigation } from '@react-navigation/native';
 const Auth = () => {
   const navigation = useNavigation();
 
-  return (<View style={styles.container}>
-    <Text style={styles.text}>Auth</Text>
-    <Button title="Press" 
-      onPress={() => navigation.navigate('Main')}
-    />
+  return (
+      <View style={styles.container}>
+        <Text style={styles.textSF}>Auth</Text>
+        <Button title="Press"
+          onPress={() => navigation.navigate('Main')}
+        />
+        <Button title="RouteDetails"
+                onPress={() => navigation.navigate('RouteDetails')}
+        />
   </View>);
 }
 
@@ -24,6 +28,10 @@ const styles = StyleSheet.create({
   },
   text: {
     color: 'black',
+  },
+  textSF: {
+    color: 'black',
+    fontFamily: 'SFProDisplayBold'
   },
 });
 

@@ -1,11 +1,13 @@
 import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
-import { StatusBar } from 'expo-status-bar';
 import { NavigationContainer } from '@react-navigation/native';
 import { createDrawerNavigator } from '@react-navigation/drawer';
+import { StatusBar } from 'expo-status-bar';
 import { Auth } from './screens/Auth';
 import { Main } from './screens/Main';
-
+import useCachedResources from "./hooks/useCacheResources";
+import AppLoading from "expo-app-loading";
+import { RouteDetails } from "./screens/RouteDetails";
+import Colors from "./constants/Colors";
 const Drawer = createDrawerNavigator();
 
 function AppDrawer() {
@@ -13,26 +15,26 @@ function AppDrawer() {
     <Drawer.Navigator>
       <Drawer.Screen name="Auth" component={Auth} />
       <Drawer.Screen name="Main" component={Main} />
+      <Drawer.Screen name="RouteDetails" component={RouteDetails}  drawerLabel={() => null}/>
     </Drawer.Navigator>
   );
 }
 
 export default function App() {
-  return (
-    <>
-      <StatusBar backgroundColor="#97BA1E" />
-      <NavigationContainer>
-        <AppDrawer />
-      </NavigationContainer>
-    </>
-  );
-}
+    const isLoadingComplete = useCachedResources();
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
+    if (isLoadingComplete) {
+        return (
+            <>
+            <StatusBar backgroundColor={Colors.light.background} />
+            <NavigationContainer>
+                <AppDrawer/>
+            </NavigationContainer>
+            </>
+        );
+    }
+
+    if (!isLoadingComplete) {
+        return <AppLoading/>;
+    }
+}
