@@ -4,7 +4,11 @@ import { Text as DefaultText } from "react-native";
 import Colors from "../constants/Colors";
 
 const useThemeColor = (theme, colorName) => {
-    return Colors[theme][colorName];
+    if (theme) {
+        return Colors[theme][colorName];
+    }
+    
+    return Colors["light"][colorName]
 }
 
 export function Text(props) {
