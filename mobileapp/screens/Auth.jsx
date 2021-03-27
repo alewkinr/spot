@@ -14,6 +14,9 @@ const Auth = () => {
         <Button title="RouteDetails"
                 onPress={() => navigation.navigate('RouteDetails')}
         />
+          <Button title="FeedScreen"
+                  onPress={() => navigation.navigate('FeedScreen')}
+          />
   </View>);
 }
 

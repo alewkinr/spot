@@ -8,6 +8,8 @@ import useCachedResources from "./hooks/useCacheResources";
 import AppLoading from "expo-app-loading";
 import { RouteDetails } from "./screens/RouteDetails";
 import Colors from "./constants/Colors";
+import {FeedScreen} from "./screens/FeedSceen";
+
 const Drawer = createDrawerNavigator();
 
 function AppDrawer() {
@@ -16,6 +18,7 @@ function AppDrawer() {
       <Drawer.Screen name="Auth" component={Auth} />
       <Drawer.Screen name="Main" component={Main} />
       <Drawer.Screen name="RouteDetails" component={RouteDetails}  drawerLabel={() => null}/>
+      <Drawer.Screen name="FeedScreen" component={FeedScreen}/>
     </Drawer.Navigator>
   );
 }
