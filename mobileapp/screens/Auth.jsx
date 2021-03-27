@@ -5,10 +5,14 @@ import { useNavigation } from '@react-navigation/native';
 const Auth = () => {
   const navigation = useNavigation();
 
-  return (<View style={styles.container}>
+  return (
+      <View style={styles.container}>
     <Text style={styles.text}>Auth</Text>
-    <Button title="Press" 
+    <Button title="Press"
       onPress={() => navigation.navigate('Main')}
+    />
+    <Button title="RouteDetails"
+            onPress={() => navigation.navigate('RouteDetails')}
     />
   </View>);
 }

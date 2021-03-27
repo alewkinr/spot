@@ -4,6 +4,7 @@ import { NavigationContainer } from '@react-navigation/native';
 import { createDrawerNavigator } from '@react-navigation/drawer';
 import { Auth } from './screens/Auth';
 import { Main } from './screens/Main';
+import { RouteDetails } from "./screens/RouteDetails";
 
 const Drawer = createDrawerNavigator();
 
@@ -12,6 +13,7 @@ function AppDrawer() {
     <Drawer.Navigator>
       <Drawer.Screen name="Auth" component={Auth} />
       <Drawer.Screen name="Main" component={Main} />
+      <Drawer.Screen name="RouteDetails" component={RouteDetails}  drawerLabel={() => null}/>
     </Drawer.Navigator>
   );
 }
