@@ -1,24 +1,24 @@
 import React from 'react';
-import { Text, View, StyleSheet} from 'react-native';
-import {BackButton} from "../components/BackButton";
+import { View, StyleSheet } from 'react-native';
+import { BackButton } from "../components/BackButton";
+import { RoutesFeed } from "../components/RoutesFeed"
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
-    width: '100%',
-    marginHorizontal: 'auto',
-    backgroundColor: '#fff',
     alignItems: 'center',
+    flex: 1,
     justifyContent: 'center',
+    marginHorizontal: 'auto',
+    width: '100%',
   }
 });
 
 const RouteDetails = () => {
   return (
       <View style={styles.container}>
-        <Text style={styles.text}>RouteDetails</Text>
           <BackButton/>
-  </View>);
-}
+          <RoutesFeed/>
+      </View>
+  )}
 
 export { RouteDetails };
