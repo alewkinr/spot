@@ -22,4 +22,6 @@ public class PostDto {
     private List<LikeDto> likes;
 
     private Long route;
+
+    private List<String> photoFileIds;
 }

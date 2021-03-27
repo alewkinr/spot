@@ -25,4 +25,6 @@ public class ProfileDto {
     private Boolean isPublic;
 
     private String personalChatLink;
+
+    private String photoFileId;
 }

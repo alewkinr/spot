@@ -33,4 +33,7 @@ public class ProfileEntity extends BaseEntity<Long> {
 
     @Column
     private String personalChatLink;
+
+    @Column
+    private String photoFileId;
 }

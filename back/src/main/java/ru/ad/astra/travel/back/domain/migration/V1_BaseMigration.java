@@ -71,7 +71,7 @@ public class V1_BaseMigration implements Migration {
         UserEntity userEntity = userRepository.findById(1L).orElseThrow();
         RouteEntity routeEntity = routesRepository.findById(1L).orElseThrow();
         IntStream.range(1, 100).forEach(value -> {
-            PostEntity postEntity = new PostEntity(UUID.randomUUID().toString(), userEntity, new HashSet<>(), new HashSet<>(), routeEntity);
+            PostEntity postEntity = new PostEntity(UUID.randomUUID().toString(), userEntity, new HashSet<>(), new HashSet<>(), routeEntity, Arrays.asList("e9f08670-1657-43b7-bb11-7549fa969394.png"));
             final PostEntity saved = postsRepository.save(postEntity);
             IntStream.range(1, 5).forEach(value1 -> {
                 CommentEntity commentEntity = new CommentEntity(UUID.randomUUID().toString() + " comment", userEntity, saved);
@@ -112,12 +112,12 @@ public class V1_BaseMigration implements Migration {
 
     private void users() {
         userRepository.save(new UserEntity("admin",
-                new ProfileEntity("Admin", "", Gender.NONE, LocalDate.now(), false, "pers_chat"),
+                new ProfileEntity("Admin", "", Gender.NONE, LocalDate.now(), false, "pers_chat", null),
                 new HashSet<>(), new HashSet<>())
         );
         IntStream.range(1, 100).forEach(i -> {
             userRepository.save(new UserEntity("user" + i,
-                    new ProfileEntity("name", "lastName", Gender.NONE, LocalDate.now(), false, "pc"),
+                    new ProfileEntity("name", "lastName", Gender.NONE, LocalDate.now(), false, "pc", null),
                     new HashSet<>(), new HashSet<>()));
         });
     }
