@@ -9,6 +9,8 @@ const Auth = () => {
       <View style={styles.container}>
     <Text style={styles.text}>Auth</Text>
     <Button title="Press"
+    <Text style={styles.textSF}>Auth</Text>
+    <Button title="Press"
       onPress={() => navigation.navigate('Main')}
     />
     <Button title="RouteDetails"
@@ -28,6 +30,10 @@ const styles = StyleSheet.create({
   },
   text: {
     color: 'black',
+  },
+  textSF: {
+    color: 'black',
+    fontFamily: 'SFProDisplayBold'
   },
 });
 
