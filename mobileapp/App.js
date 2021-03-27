@@ -1,6 +1,7 @@
 import React from 'react';
 import {NavigationContainer} from '@react-navigation/native';
 import {createDrawerNavigator} from '@react-navigation/drawer';
+import { StatusBar } from 'expo-status-bar';
 import {Auth} from './screens/Auth';
 import {Main} from './screens/Main';
 import useCachedResources from "./hooks/useCacheResources";
@@ -24,9 +25,12 @@ export default function App() {
 
     if (isLoadingComplete) {
         return (
+            <>
+            <StatusBar backgroundColor="#97BA1E" />
             <NavigationContainer>
                 <AppDrawer/>
             </NavigationContainer>
+            </>
         );
     }
 
