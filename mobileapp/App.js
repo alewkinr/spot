@@ -11,6 +11,7 @@ import {FeedScreen} from "./screens/FeedSceen";
 import * as eva from '@eva-design/eva';
 import Colors from "./constants/Colors";
 import {ApplicationProvider} from "@ui-kitten/components";
+import {MainScreen} from "./screens/MainScreen";
 
 const Drawer = createDrawerNavigator();
 
@@ -18,7 +19,7 @@ function AppDrawer() {
     return (
         <Drawer.Navigator>
             <Drawer.Screen name="Auth" component={Auth}/>
-            <Drawer.Screen name="Main" component={Main}/>
+            <Drawer.Screen name="Main" component={MainScreen}/>
             <Drawer.Screen name="RouteDetails" component={RouteDetails} drawerLabel={() => null}/>
             <Drawer.Screen name="FeedScreen" component={FeedScreen}/>
         </Drawer.Navigator>
