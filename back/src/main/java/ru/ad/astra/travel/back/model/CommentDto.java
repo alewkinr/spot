@@ -11,5 +11,5 @@ public class CommentDto {
 
     private String text;
 
-    private UserDto author;
+    private Long author;
 }

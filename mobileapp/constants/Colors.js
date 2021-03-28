@@ -20,13 +20,19 @@ const N40 = "#ECEFF5";
 const N30 = "#F1F3F8";
 const N20 = "#F6F8FC";
 
+const Grey = "#E5E8ED";
+const GreyLight = "#9BA2AE";
+
+
 const Colors = {
     light: {
-        text: N60,
-        background: G600
+        text: N900,
+        background: G600,
+        divider: Grey,
+        subtitle: GreyLight,
     },
     dark: {
-        text: N900,
+        text: N60,
     },
 };
 

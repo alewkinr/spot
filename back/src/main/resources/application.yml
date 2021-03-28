@@ -1,8 +1,17 @@
 server:
-  port: 8080
+  port: 9292
 
 # swagger-ui custom path
 springdoc.swagger-ui.path: /swagger-ui.html
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health, info, shutdown
+  endpoint:
+    shutdown:
+      enabled: true
 
 spring:
   datasource:
@@ -24,3 +33,9 @@ spring:
 format:
   local-date-time: yyyy-MM-dd HH:mm:ss
   local-date: dd-MM-yyyy
+
+photostorage:
+  location: filestorage
+
+damerau:
+  boundary: 3

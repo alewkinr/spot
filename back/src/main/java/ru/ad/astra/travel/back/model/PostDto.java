@@ -15,7 +15,13 @@ public class PostDto {
 
     private String text;
 
-    private UserDto author;
+    private Long author;
 
     private List<CommentDto> comments;
+
+    private List<LikeDto> likes;
+
+    private Long route;
+
+    private List<String> photoFileIds;
 }

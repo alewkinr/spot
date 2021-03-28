@@ -30,4 +30,10 @@ public class ProfileEntity extends BaseEntity<Long> {
 
     @Column
     private Boolean isPublic;
+
+    @Column
+    private String personalChatLink;
+
+    @Column
+    private String photoFileId;
 }

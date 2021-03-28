@@ -6,6 +6,8 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import ru.ad.astra.travel.back.domain.model.UserEntity;
+import ru.ad.astra.travel.back.domain.repository.PostsRepository;
 import ru.ad.astra.travel.back.domain.repository.UserRepository;
 import ru.ad.astra.travel.back.model.UserDto;
 
@@ -16,8 +18,23 @@ public class UserService {
 
     private final UserRepository userRepository;
     private final ModelMapper modelMapper;
+    private final PostsRepository postsRepository;
 
     public Page<UserDto> getAllUsers(Pageable pageable) {
         return userRepository.findAll(pageable).map(userEntity -> modelMapper.map(userEntity, UserDto.class));
+    }
+
+    public UserDto getById(Long userId) {
+        return modelMapper.map(userRepository.findById(userId).orElseThrow(), UserDto.class);
+    }
+
+    public UserDto getByPostId(Long postId) {
+        return modelMapper.map(postsRepository.findById(postId).orElseThrow().getAuthor(), UserDto.class);
+    }
+
+    public UserDto updatePhoto(Long userId, String photoId) {
+        UserEntity userEntity = userRepository.findById(userId).orElseThrow();
+        userEntity.getProfile().setPhotoFileId(photoId);
+        return modelMapper.map(userRepository.save(userEntity), UserDto.class);
     }
 }

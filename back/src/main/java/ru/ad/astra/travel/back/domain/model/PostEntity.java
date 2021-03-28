@@ -4,10 +4,11 @@ import lombok.*;
 
 import javax.persistence.*;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
-@ToString(exclude = {"author", "route"})
-@EqualsAndHashCode(callSuper = true, exclude = {"author", "route"})
+@ToString(exclude = {"comments", "likes"})
+@EqualsAndHashCode(callSuper = true, exclude = {"comments", "likes"})
 @NoArgsConstructor
 @AllArgsConstructor
 @Data
@@ -31,4 +32,13 @@ public class PostEntity extends BaseEntity<Long> {
     @ManyToOne
     @JoinColumn(name = "route_id", nullable = false)
     private RouteEntity route;
+
+    @ElementCollection
+    @CollectionTable(
+            name = "post_photos",
+            joinColumns = @JoinColumn(name = "id", referencedColumnName = "id")
+    )
+    @Column(name = "post_photos")
+    private List<String> photoFileIds;
+
 }

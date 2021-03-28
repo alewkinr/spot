@@ -3,12 +3,17 @@ import * as Font from 'expo-font';
 import * as SplashScreen from 'expo-splash-screen';
 import * as React from 'react';
 import {Asset} from "expo-asset";
+import { Ionicons } from "@expo/vector-icons";
+import * as Font from "expo-font";
+import * as SplashScreen from "expo-splash-screen";
+import * as React from "react"; 
+
 
 export default function useCachedResources() {
     const [isLoadingComplete, setLoadingComplete] = React.useState(false);
 
     // Load any resources or data that we need prior to rendering the app
-    React.useEffect(() => {
+    React.useEffect(async () => {
         async function loadResourcesAndDataAsync() {
             try {
                 await SplashScreen.preventAutoHideAsync();
@@ -16,9 +21,9 @@ export default function useCachedResources() {
                 // Load fonts
                 await Font.loadAsync({
                     ...Ionicons.font,
-                    'SFProDisplayBold': require('../assets/fonts/SF-Pro-Display-Bold.otf'),
-                    'SFProDisplayLight': require('../assets/fonts/SF-Pro-Display-Light.otf'),
-                    'SFProDisplayRegular': require('../assets/fonts/SF-Pro-Display-Regular.otf')
+                    "SFProDisplayBold": require("../assets/fonts/SF-Pro-Display-Bold.otf"),
+                    "SFProDisplayLight": require("../assets/fonts/SF-Pro-Display-Light.otf"),
+                    "SFProDisplayRegular": require("../assets/fonts/SF-Pro-Display-Regular.otf")
                 });
 
                 const images = [
@@ -34,14 +39,14 @@ export default function useCachedResources() {
                 await Asset.loadAsync(images);
             } catch (e) {
                 // We might want to provide this error information to an error reporting service
-                console.warn(e);
+                console.error(e);
             } finally {
                 setLoadingComplete(true);
                 // await SplashScreen.hideAsync();
             }
         }
 
-        loadResourcesAndDataAsync();
+        await loadResourcesAndDataAsync();
     }, []);
 
     return isLoadingComplete;
