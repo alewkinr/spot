@@ -7,7 +7,7 @@ const useThemeColor = (theme, colorName) => {
     if (theme) {
         return Colors[theme][colorName];
     }
-    
+
     return Colors["light"][colorName]
 }
 
@@ -19,3 +19,5 @@ export function Text(props) {
 
     return <DefaultText style={[{ color }, style]} {...otherProps} />;
 }
+
+

@@ -1,9 +1,49 @@
 import React from "react";
-import { View, StyleSheet } from "react-native";
+import { View, StyleSheet, SafeAreaView } from "react-native";
 import { List } from "@ui-kitten/components";
 import { Dimensions } from "react-native";
-import { RouteCard } from "../components/RouteCard"
+import { RouteCard } from "../components/RouteCard/RouteCard"
 
+
+const RoutesList = ( { navigation }) => {
+    // todo: fill with data from backend
+    const data = new Array(1).fill({
+        navigation: navigation,
+        title: "Путешествие в Азию",
+        type: "самостоятельный маршрут",
+        icon: "⛩",
+        id: 123,
+        cost: 100000,
+        from: new Date(),
+        to: new Date(),
+        destinations: [
+            {
+                country: "Южная Корея",
+                cities: ["Сеул", "Тэгу"],
+            },
+            {
+                country: "Япония",
+                cities: ["Осака", "Токио", "Нагоя"],
+            },
+            {
+                country: "Китай",
+                cities: ["Пекин", "Шанхай"],
+            }
+        ],
+        author_id: 123,
+        companions: [456, 789]
+    });
+
+  return (
+      <SafeAreaView style={styles.container}>
+          <List
+              style={styles.list}
+              contentContainerStyle={styles.item}
+              data={data}
+              renderItem={RouteCard}
+          />
+      </SafeAreaView>
+  )}
 
 const styles = StyleSheet.create({
     container: {
@@ -11,35 +51,14 @@ const styles = StyleSheet.create({
         flex: 1,
         justifyContent: "center",
         marginHorizontal: "auto",
-        width: "100%",
+        minHeight: Math.round(Dimensions.get("window").height),
     },
     item: {
         paddingHorizontal: 8,
         paddingVertical: 4,
     },
     list: {
-        marginTop: 50,
         maxHeight: Dimensions.get("window").height
     }
 });
-const RoutesList = ( { navigation }) => {
-// todo: fill with data from backend
-    const data = new Array(8).fill({
-        navigation: navigation,
-        title: "Item",
-        id: 123,
-
-    });
-
-  return (
-      <View style={styles.container}>
-          <List
-              style={styles.list}
-              contentContainerStyle={styles.item}
-              data={data}
-              renderItem={RouteCard}
-          />
-      </View>
-  )}
-
 export { RoutesList };
