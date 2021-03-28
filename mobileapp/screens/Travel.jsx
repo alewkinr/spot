@@ -1,6 +1,8 @@
 import React from "react";
-import { SafeAreaView, ScrollView, StyleSheet, Dimensions, Text } from "react-native";
+import { View, SafeAreaView, ScrollView, StyleSheet, Dimensions, Text } from "react-native";
 import { Header } from "../components/Header";
+import { CircledText } from "../components/CircledText";
+import { TouchableOpacity } from "react-native-gesture-handler";
 
 export const Travel = () => {
   const Mock = {
@@ -19,11 +21,11 @@ export const Travel = () => {
     {
       country: "Япония",
       cities: ["Осака", "Токио", "Нагоя"],
-    },{
+    }, {
       country: "Китай",
       cities: ["Пекин", "Шанхай"],
     },
-  ],
+    ],
     lastComments: [{
       nickname: 'kosokrivo',
       text: 'Топовый вариант за свои деньги, хочу с вами',
@@ -32,19 +34,19 @@ export const Travel = () => {
       nickname: 'pryamo',
       text: 'Тоже хочу с вами',
     }
-  ],
-  organizator: {
-    nickname: 'helki',
-    userpic: '',
-  },
-  members: [{
-    nickname: 'yetrandom',
-    userpic: ''
-  },
-  {
-    nickname: 'anotherday',
-    userpic: ''
-  }]
+    ],
+    organizator: {
+      nickname: 'helki',
+      userpic: '',
+    },
+    members: [{
+      nickname: 'yetrandom',
+      userpic: ''
+    },
+    {
+      nickname: 'anotherday',
+      userpic: ''
+    }]
   }
 
   return (
@@ -55,7 +57,49 @@ export const Travel = () => {
 
       <ScrollView style={styles.containerScrollView}>
         <View>
-        
+          <View>
+            <Text>{Mock.cost}{" "}{Mock.valute}</Text>
+            <CircledText />
+            <Text>{Mock.duration} дней</Text>
+          </View>
+          <View>
+            <Text>{Mock.name}</Text>
+            <Text>{Mock.type}</Text>
+          </View>
+          <Text>{Mock.desc}</Text>
+          <View>
+            {/* Map goes here */}
+          </View>
+          <Text>{Mock.cities.length} страны, 7 городов</Text>
+
+          <TouchableOpacity>
+            <Text>Подробнее</Text>
+          </TouchableOpacity>
+
+          <Text>Комментарии</Text>
+          <View>
+            <Text>kosokrivo</Text>
+            <Text>Топовый вариант</Text>
+          </View>
+
+          <TouchableOpacity>
+            <Text>Посмотреть все комментарии</Text>
+          </TouchableOpacity>
+
+          <View>
+            <Text>Организатор</Text>
+            <View>
+              {/* Pick */}
+              <Text>helki</Text>
+            </View>
+          </View>
+          <View>
+            <Text>Участники</Text>
+            <View>
+              {/* Pick */}
+              <Text>helki</Text>
+            </View>
+          </View>
         </View>
       </ScrollView>
     </SafeAreaView>
