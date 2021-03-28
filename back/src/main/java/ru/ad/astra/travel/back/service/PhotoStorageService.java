@@ -21,6 +21,8 @@ import java.util.UUID;
 @Service
 public class PhotoStorageService {
 
+    public static final String PNG = "image/png";
+
     private final Path fileStorageLocation;
 
     @Autowired
