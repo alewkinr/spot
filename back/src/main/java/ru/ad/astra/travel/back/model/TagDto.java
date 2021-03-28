@@ -22,4 +22,6 @@ public class TagDto {
     private Set<Long> path = new HashSet<>();
 
     private List<Long> routes;
+
+    private String photoFileId;
 }

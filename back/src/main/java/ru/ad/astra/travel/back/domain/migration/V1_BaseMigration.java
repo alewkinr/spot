@@ -62,7 +62,7 @@ public class V1_BaseMigration implements Migration {
                 }
                 HashSet<RouteEntity> routes = new HashSet<>();
                 routes.add(route);
-                prev = tagsRepository.save(new TagEntity("TEST tag" + index, 0f, tagEntities, routes));
+                prev = tagsRepository.save(new TagEntity("TEST tag" + index, 0f, tagEntities, routes, "photo link"));
             }
         }
     }

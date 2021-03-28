@@ -26,4 +26,7 @@ public class TagEntity extends BaseEntity<Long> {
 
     @ManyToMany
     private Set<RouteEntity> routes;
+
+    @Column
+    private String photoFileId;
 }
