@@ -53,7 +53,7 @@ public class V1_BaseMigration implements Migration {
     private void tags() {
         List<String> photos = Arrays.asList(
                 "1.png",
-                "places/1.png",
+                "e9f08670-1657-43b7-bb11-7549fa969394.png",
                 "places/2.png",
                 "places/3.png",
                 "places/4.png",
