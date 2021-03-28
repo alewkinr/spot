@@ -5,7 +5,7 @@
  * @example
  * 123123123 => 123 123 123
  */
-function convertToFormat(value, limit = 100) {
+function convertToFormat(value, limit = 1000000) {
     const normilizedValue = normilize(value.toString(), limit);
     const formatter = new Intl.NumberFormat("ru");
 

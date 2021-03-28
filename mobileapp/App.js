@@ -10,17 +10,17 @@ import { RoutesListStackNavigation } from "./navigation/RoutesListStackNavigatio
 import { FeedScreen } from "./screens/FeedSceen";
 import * as eva from "@eva-design/eva";
 import Colors from "./constants/Colors";
-import {MainScreen} from "./screens/MainScreen";
 import { ApplicationProvider } from "@ui-kitten/components";
+import {MainScreen} from "./screens/MainScreen";
 
 const Drawer = createDrawerNavigator();
 
 function AppDrawer() {
   return (
     <Drawer.Navigator>
-      <Drawer.Screen name="Auth" component={Auth} />
-      <Drawer.Screen name="Main" component={Main} />
+      <Drawer.Screen name="MainScreen"  component={MainScreen} options={{title: "Главный экран"}}/>
       <Drawer.Screen name="FeedScreen" component={FeedScreen}/>
+      <Drawer.Screen name="Main" component={Main}/>
       <Drawer.Screen name="RoutesListStackNavigation" component={RoutesListStackNavigation}/>
     </Drawer.Navigator>
   );

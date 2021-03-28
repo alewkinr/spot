@@ -30,6 +30,12 @@ export default function useCachedResources() {
                     require("../assets/img/places/4.png"),
                     require("../assets/img/places/5.png"),
                     require("../assets/img/places/6.png"),
+                    require("../assets/img/users/1.png"),
+                    require("../assets/img/users/2.png"),
+                    require("../assets/img/users/3.png"),
+                    require("../assets/img/users/4.png"),
+                    require("../assets/img/users/5.png"),
+
                 ];
                 // Asset.loadAsync takes an array and this way we can load the images in parallel
                 await Asset.loadAsync(images);
