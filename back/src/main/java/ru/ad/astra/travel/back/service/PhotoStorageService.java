@@ -64,8 +64,11 @@ public class PhotoStorageService {
 
     public Resource loadFileAsResource(String fileName) {
         try {
-            Path filePath = this.fileStorageLocation.resolve(fileName).normalize();
-            Resource resource = new UrlResource(filePath.toUri());
+            Path filePath = null;
+            for (String s : fileName.split("//")) {
+                filePath = this.fileStorageLocation.resolve(s).normalize();
+            }
+            Resource resource = new UrlResource(Optional.ofNullable(filePath).orElseThrow().toUri());
             if (resource.exists()) {
                 return resource;
             } else {

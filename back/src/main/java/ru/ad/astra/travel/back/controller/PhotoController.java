@@ -10,6 +10,8 @@ import org.springframework.web.multipart.MultipartFile;
 import ru.ad.astra.travel.back.model.PhotoDto;
 import ru.ad.astra.travel.back.service.PhotoStorageService;
 
+import javax.servlet.http.HttpServletRequest;
+import java.util.Arrays;
 import java.util.Optional;
 import java.util.UUID;
 
@@ -20,8 +22,19 @@ public class PhotoController {
 
     private final PhotoStorageService photoStorageService;
 
-    @GetMapping("/{photo:.+}")
-    public ResponseEntity<Resource> getById(@PathVariable("photo") String photo) {
+    @GetMapping("/**")
+    public ResponseEntity<Resource> getById(HttpServletRequest request) {
+        Resource resource = photoStorageService.loadFileAsResource(request.getRequestURI()
+                .split(request.getContextPath() + "/photos/")[1]);
+        return ResponseEntity.ok()
+                .header(HttpHeaders.CONTENT_DISPOSITION, Arrays.stream(request.getRequestURI()
+                        .split(request.getContextPath() + "/")).reduce((f,s) ->s).orElse(null))
+                .contentType(MediaType.parseMediaType(PhotoStorageService.PNG))
+                .body(resource);
+    }
+
+    @GetMapping
+    public ResponseEntity<Resource> getById(@RequestParam("photo") String photo) {
         Resource resource = photoStorageService.loadFileAsResource(photo);
         return ResponseEntity.ok()
                 .header(HttpHeaders.CONTENT_DISPOSITION, photo)
