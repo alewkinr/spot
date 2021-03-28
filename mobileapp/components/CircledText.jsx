@@ -11,6 +11,7 @@ export const CircledText = ({ children, circleRadius = 45, }) => {
       width: circleRadius,
     },
     circleText: {
+      fontFamily: 'SFProDisplayRegular',
       fontSize: 20,
       marginTop: circleRadius / 4,
       textAlign: "center",

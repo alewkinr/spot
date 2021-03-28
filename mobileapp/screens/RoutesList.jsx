@@ -36,7 +36,7 @@ const RoutesList = ( { navigation }) => {
 
   return (
       <SafeAreaView style={styles.container}>
-          <List
+          <List horizontal={false}
               style={styles.list}
               contentContainerStyle={styles.item}
               data={data}

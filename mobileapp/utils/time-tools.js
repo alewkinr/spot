@@ -36,13 +36,7 @@ export function timeConverter(unix) {
         "." +
         month +
         "." +
-        toZeroLeadFormat(year) +
-        " " +
-        toZeroLeadFormat(hour) +
-        ":" +
-        toZeroLeadFormat(min) +
-        ":" +
-        toZeroLeadFormat(sec);
+        toZeroLeadFormat(year);
     return datetime;
 }
 
@@ -67,6 +61,6 @@ export function dateShortener(unix) {
     const hour = a.getHours();
     const min = a.getMinutes();
 
-    const datetime = toZeroLeadFormat(hour) + ":" + toZeroLeadFormat(min);
+    const datetime = toZeroLeadFormat(date) + "." + toZeroLeadFormat(hour);
     return datetime;
 }
