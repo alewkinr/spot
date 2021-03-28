@@ -15,9 +15,12 @@ const Auth = () => {
         <Button title="RoutesListStackNavigation"
                 onPress={() => navigation.navigate("RoutesListStackNavigation")}
         />
-          <Button title="FeedScreen"
+        <Button title="TravelListStackNavigation"
+                onPress={() => navigation.navigate("TravelListStackNavigation")}
+        />
+        <Button title="FeedScreen"
                   onPress={() => navigation.navigate("FeedScreen")}
-          />
+        />
   </View>);
 }
 

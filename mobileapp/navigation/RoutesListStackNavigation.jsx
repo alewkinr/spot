@@ -5,12 +5,11 @@ import { Route } from "../screens/Route";
 
 const Stack = createStackNavigator();
 
-const RoutesListStackNavigation = () => {
-    return (
-        <Stack.Navigator headerShown={false}>
-            <Stack.Screen name="RoutesListScreen" component={RoutesList} />
-            <Stack.Screen name="RouteScreen" component={Route} />
-        </Stack.Navigator>
-    )}
-
-export { RoutesListStackNavigation };
+export const RoutesListStackNavigation = () => {
+  return (
+    <Stack.Navigator headerShown={false} headerMode="none">
+      <Stack.Screen name="RoutesListScreen" component={RoutesList} />
+      <Stack.Screen name="RouteScreen" component={Route} />
+    </Stack.Navigator>
+  )
+}

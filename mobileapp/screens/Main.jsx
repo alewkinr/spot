@@ -5,7 +5,7 @@ import { useNavigation } from "@react-navigation/native";
 import { ScrollView } from "react-native-gesture-handler";
 import { CircledText } from "../components/CircledText";
 
-const Main = () => {
+export const Main = () => {
   // const navigation = useNavigation();
   const [content, setContent] = useState("recomendations"); // routes | travelers
 
@@ -129,6 +129,3 @@ const styles = StyleSheet.create({
     paddingHorizontal: 20,
   }
 });
-
-
-export { Main };

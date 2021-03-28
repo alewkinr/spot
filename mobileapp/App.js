@@ -7,6 +7,7 @@ import { Main } from "./screens/Main";
 import useCachedResources from "./hooks/useCacheResources";
 import AppLoading from "expo-app-loading";
 import { RoutesListStackNavigation } from "./navigation/RoutesListStackNavigation";
+import { TravelListStackNavigation } from "./navigation/TravelListStackNavigation";
 import { FeedScreen } from "./screens/FeedSceen";
 import * as eva from "@eva-design/eva";
 import Colors from "./constants/Colors";
@@ -22,6 +23,7 @@ function AppDrawer() {
       <Drawer.Screen name="Main" component={Main} />
       <Drawer.Screen name="FeedScreen" component={FeedScreen}/>
       <Drawer.Screen name="RoutesListStackNavigation" component={RoutesListStackNavigation}/>
+      <Drawer.Screen name="TravelListStackNavigation" component={TravelListStackNavigation}/>
     </Drawer.Navigator>
   );
 }
