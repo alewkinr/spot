@@ -22,7 +22,7 @@ public class RoutesController {
 
     @GetMapping
     public ResponseEntity<Page<RouteDto>> getAllRoutes(Pageable pageable) {
-        return ResponseEntity.ok(routesService.getAllUsers(pageable));
+        return ResponseEntity.ok(routesService.getAll(pageable));
     }
 
     @GetMapping("/{routeId}")

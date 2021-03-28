@@ -30,7 +30,7 @@ public class TagsService {
     private final ModelMapper modelMapper;
 
     public Page<TagDto> getAll(Pageable pageable) {
-        return tagsRepository.findAll(pageable).map(userEntity -> modelMapper.map(userEntity, TagDto.class));
+        return tagsRepository.findAll(pageable).map(tag -> modelMapper.map(tag, TagDto.class));
     }
 
     public TagDto getById(Long tagId) {

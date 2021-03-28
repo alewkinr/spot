@@ -22,7 +22,7 @@ public class RoutesService {
     private final RoutesRepository routesRepository;
     private final ModelMapper modelMapper;
 
-    public Page<RouteDto> getAllUsers(Pageable pageable) {
+    public Page<RouteDto> getAll(Pageable pageable) {
         return routesRepository.findAll(pageable).map(routeEntity -> modelMapper.map(routeEntity, RouteDto.class));
     }
 

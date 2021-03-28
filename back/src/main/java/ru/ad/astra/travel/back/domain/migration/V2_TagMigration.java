@@ -1,17 +1,16 @@
 package ru.ad.astra.travel.back.domain.migration;
 
 import lombok.RequiredArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
+import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 import ru.ad.astra.travel.back.domain.model.RouteEntity;
 import ru.ad.astra.travel.back.domain.model.TagEntity;
 import ru.ad.astra.travel.back.domain.repository.RoutesRepository;
 import ru.ad.astra.travel.back.domain.repository.TagsRepository;
 
-import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.Iterator;
-import java.util.List;
+import java.util.*;
 
 @RequiredArgsConstructor
 @Transactional
@@ -20,6 +19,8 @@ public class V2_TagMigration implements Migration {
 
     private final TagsRepository tagsRepository;
     private final RoutesRepository routesRepository;
+    @Autowired
+    private V2_TagMigration v2_tagMigration;
 
     @Override
     public String getId() {
@@ -28,42 +29,60 @@ public class V2_TagMigration implements Migration {
 
     @Override
     public void migrate() {
-        List<TagEntity> tags = tags();
-        link(tags);
+        v2_tagMigration.tags();
+        v2_tagMigration.link();
     }
 
-    private void link(List<TagEntity> tags) {
+    @Transactional
+    public void link() {
         Iterator<RouteEntity> iterator = routesRepository.findAll().iterator();
         if (iterator.hasNext()) {
             RouteEntity route = iterator.next();
-            route.getTags().addAll(tags);
+            Set<TagEntity> r = tagsRepository.findByName("Направления").orElseThrow().getPath();
+            route.getTags().addAll(r);
+            r.forEach(r_ -> r_.getRoutes().add(route));
             routesRepository.save(route);
         }
     }
 
-    private List<TagEntity> tags() {
+    @Transactional(propagation = Propagation.REQUIRES_NEW)
+    public void tags() {
         List<TagEntity> result = new ArrayList<>();
-        result.add(saveSimpleTag("Азия", "places/1.png"));
-        result.add(saveSimpleTag("Европа", "places/2.png"));
-        result.add(saveSimpleTag("Африка", "places/3.png"));
-        result.add(saveSimpleTag("Северная Америка", "places/4.png"));
-        result.add(saveSimpleTag("Южная Америка", "places/5.png"));
-        result.add(saveSimpleTag("Австралия", "places/6.png"));
 
-        result.add(saveSimpleTag("Семья", "places/1.png"));
-        result.add(saveSimpleTag("Отдых", "places/2.png"));
-        result.add(saveSimpleTag("Бизнес", "places/3.png"));
-        result.add(saveSimpleTag("Тематический", "places/4.png"));
-        result.add(saveSimpleTag("Спорт", "places/5.png"));
+        List<TagEntity> r1 = new ArrayList<>();
+        r1.add(saveSimpleTag("Азия", "places/1.png"));
+        r1.add(saveSimpleTag("Европа", "places/2.png"));
+        r1.add(saveSimpleTag("Африка", "places/3.png"));
+        r1.add(saveSimpleTag("Северная Америка", "places/4.png"));
+        r1.add(saveSimpleTag("Южная Америка", "places/5.png"));
+        r1.add(saveSimpleTag("Австралия", "places/6.png"));
+        result.addAll(r1);
+        TagEntity routes = saveSimpleTag("Направления", "places/1.png");
+        routes.getPath().addAll(r1);
+        tagsRepository.save(routes);
 
-        result.add(saveSimpleTag("История", "places/1.png"));
-        result.add(saveSimpleTag("Природа", "places/2.png"));
-        result.add(saveSimpleTag("Вечеринки", "places/3.png"));
-        result.add(saveSimpleTag("Культура", "places/4.png"));
-        result.add(saveSimpleTag("Работа", "places/5.png"));
-        result.add(saveSimpleTag("Хобби", "places/6.png"));
+        List<TagEntity> r2 = new ArrayList<>();
+        r2.add(saveSimpleTag("Семья", "places/1.png"));
+        r2.add(saveSimpleTag("Отдых", "places/2.png"));
+        r2.add(saveSimpleTag("Бизнес", "places/3.png"));
+        r2.add(saveSimpleTag("Тематический", "places/4.png"));
+        r2.add(saveSimpleTag("Спорт", "places/5.png"));
+        result.addAll(r2);
+        routes = saveSimpleTag("Увлечения", "places/1.png");
+        routes.getPath().addAll(r2);
+        tagsRepository.save(routes);
 
-        return result;
+        List<TagEntity> r3 = new ArrayList<>();
+        r3.add(saveSimpleTag("История", "places/1.png"));
+        r3.add(saveSimpleTag("Природа", "places/2.png"));
+        r3.add(saveSimpleTag("Вечеринки", "places/3.png"));
+        r3.add(saveSimpleTag("Культура", "places/4.png"));
+        r3.add(saveSimpleTag("Работа", "places/5.png"));
+        r3.add(saveSimpleTag("Хобби", "places/6.png"));
+        result.addAll(r3);
+        routes = saveSimpleTag("Досуг", "places/1.png");
+        routes.getPath().addAll(r3);
+        tagsRepository.save(routes);
     }
 
     private TagEntity saveSimpleTag(String title, String link) {
