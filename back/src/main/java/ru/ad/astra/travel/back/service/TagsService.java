@@ -15,8 +15,6 @@ import ru.ad.astra.travel.back.model.TagDto;
 import ru.ad.astra.travel.back.model.request.TagRequest;
 import ru.ad.astra.travel.back.model.response.TagResponse;
 
-import java.util.stream.StreamSupport;
-
 @Transactional
 @RequiredArgsConstructor
 @Service
@@ -38,7 +36,7 @@ public class TagsService {
     }
 
     public TagResponse createTag(TagRequest request) {
-        TagEntity tag = StreamSupport.stream(tagsRepository.findAll().spliterator(), false)
+        TagEntity tag = tagsRepository.findAll().stream()
                 .filter(tagEntity ->
                         damerau.distance(request.getName(), tagEntity.getName()) <= boundary
                 ).findFirst().orElse(modelMapper.map(request, TagEntity.class));

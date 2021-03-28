@@ -35,14 +35,12 @@ public class V2_TagMigration implements Migration {
 
     @Transactional
     public void link() {
-        Iterator<RouteEntity> iterator = routesRepository.findAll().iterator();
-        if (iterator.hasNext()) {
-            RouteEntity route = iterator.next();
+        routesRepository.findAll().forEach( route -> {
             Set<TagEntity> r = tagsRepository.findByName("Направления").orElseThrow().getPath();
             route.getTags().addAll(r);
             r.forEach(r_ -> r_.getRoutes().add(route));
             routesRepository.save(route);
-        }
+        });
     }
 
     @Transactional(propagation = Propagation.REQUIRES_NEW)
