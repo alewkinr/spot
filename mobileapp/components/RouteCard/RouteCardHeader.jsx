@@ -1,20 +1,26 @@
-import React from "react";
-import {StyleSheet, View} from "react-native";
+import React, {useState} from "react";
+import {StyleSheet, TextInput, View} from "react-native";
 import {Text} from "../Themed";
 import Colors from "../../constants/Colors";
 import {CircledText} from "../CircledText";
 import RightChevron from "../svg/RightChevron";
+import {Ionicons} from "@expo/vector-icons";
 
-const RouteCardHeader = (props) => (
-    <View style={styles.container}>
-        <CircledText style={styles.icon}>{props.item.icon}</CircledText>
-        <View style={{marginRight: 120}}>
-            <Text style={styles.title}>{props.item.title}</Text>
-            <Text style={styles.subtitle}>{props.item.type}</Text>
+const RouteCardHeader = (props) => {
+
+    return (
+
+        <View style={styles.container}>
+
+            <CircledText style={styles.icon}>{props.item.icon}</CircledText>
+            <View style={{marginRight: 120}}>
+                <Text style={styles.title}>{props.item.title}</Text>
+                <Text style={styles.subtitle}>{props.item.type}</Text>
+            </View>
+            <RightChevron width={16} height={16}/>
         </View>
-        <RightChevron width={16} height={16}/>
-    </View>
-);
+    );
+}
 
 const styles = StyleSheet.create({
     container: {
@@ -40,5 +46,6 @@ const styles = StyleSheet.create({
 
     }
 })
+
 
 export {RouteCardHeader}

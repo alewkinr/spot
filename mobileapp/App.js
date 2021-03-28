@@ -21,7 +21,10 @@ function AppDrawer() {
     <Drawer.Navigator>
       <Drawer.Screen name="MainScreen"  component={MainScreen} options={{title: "Главный экран"}}/>
       <Drawer.Screen name="FeedScreen" component={FeedScreen}/>
-      <Drawer.Screen name="Main" component={Main}/>
+      <Drawer.Screen name="Main" component={Main} options={{
+          headerShown: false,
+          headerMode: 'none'
+      }}/>
       <Drawer.Screen name="RoutesListStackNavigation" component={RoutesListStackNavigation}/>
       <Drawer.Screen name="TravelListStackNavigation" component={TravelListStackNavigation}/>
     </Drawer.Navigator>
