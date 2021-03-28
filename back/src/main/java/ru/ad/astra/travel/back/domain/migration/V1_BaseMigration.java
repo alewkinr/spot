@@ -25,7 +25,7 @@ public class V1_BaseMigration implements Migration {
     private final PostsRepository postsRepository;
     private final CommentRepository commentRepository;
     private final LikeRepository likeRepository;
-    private final TagsRepository tagsRepository;
+
     private final ChatService chatService;
 
     @Override
@@ -39,7 +39,6 @@ public class V1_BaseMigration implements Migration {
         routes();
         tickets();
         posts();
-        tags();
         chats();
     }
 
@@ -48,32 +47,6 @@ public class V1_BaseMigration implements Migration {
             add(1L);
             add(2L);
         }}, "link"));
-    }
-
-    private void tags() {
-        List<String> photos = Arrays.asList(
-                "1.png",
-                "e9f08670-1657-43b7-bb11-7549fa969394.png",
-                "places/2.png",
-                "places/3.png",
-                "places/4.png",
-                "places/5.png",
-                "places/6.png"
-        );
-        Iterator<RouteEntity> iterator = routesRepository.findAll().iterator();
-        TagEntity prev = null;
-        if (iterator.hasNext()) {
-            RouteEntity route = iterator.next();
-            for (int index = 0; index < 7; index++) {
-                HashSet<TagEntity> tagEntities = new HashSet<>();
-                if (prev != null) {
-                    tagEntities.add(prev);
-                }
-                HashSet<RouteEntity> routes = new HashSet<>();
-                routes.add(route);
-                prev = tagsRepository.save(new TagEntity("TEST tag" + index, 0f, tagEntities, routes, photos.get(index)));
-            }
-        }
     }
 
     private void posts() {
