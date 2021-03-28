@@ -8,6 +8,7 @@ import ru.ad.astra.travel.back.domain.model.*;
 import ru.ad.astra.travel.back.domain.repository.*;
 import ru.ad.astra.travel.back.model.request.CreateChatRequest;
 import ru.ad.astra.travel.back.service.ChatService;
+import ru.ad.astra.travel.back.service.RandomEmojiService;
 
 import java.math.BigDecimal;
 import java.time.LocalDate;
@@ -25,6 +26,7 @@ public class V1_BaseMigration implements Migration {
     private final PostsRepository postsRepository;
     private final CommentRepository commentRepository;
     private final LikeRepository likeRepository;
+    private final RandomEmojiService emojiService;
 
     private final ChatService chatService;
 
@@ -81,13 +83,17 @@ public class V1_BaseMigration implements Migration {
 
     private void routes() {
         IntStream.range(1, 10).forEach(i -> {
-            RouteEntity saved = routesRepository.save(new RouteEntity("Route " + i, "Long-long-long desc", 0., 0., BigDecimal.ZERO,
+            RouteEntity saved = routesRepository.save(new RouteEntity("Route " + i, "Long-long-long desc", 0., 0.,
+                    LocalDate.now(),
+                    LocalDate.now().plusDays(1),
+                    BigDecimal.ZERO,
+                    emojiService.getRandom(),
                     new HashSet<>(), new HashSet<>(), new HashSet<>()
             ));
 
             saved.getSpots().addAll(new HashSet<>(Arrays.asList(
-                    new SpotEntity("A" + i, 10f, 10f, saved, new HashSet<>()),
-                    new SpotEntity("B" + i, 10f, 10f, saved, new HashSet<>()))));
+                    new SpotEntity("A" + i, 10f, 10f, "Австралия", "Аделаида", saved, new HashSet<>()),
+                    new SpotEntity("B" + i, 10f, 10f, "Южная Корея", "Сеул", saved, new HashSet<>()))));
             routesRepository.save(saved);
         });
     }

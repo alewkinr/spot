@@ -16,4 +16,8 @@ public class SpotDto {
     private Float latitude;
 
     private Float longitude;
+
+    private String country;
+
+    private String city;
 }

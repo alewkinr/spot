@@ -4,6 +4,8 @@ import lombok.*;
 
 import javax.persistence.*;
 import java.math.BigDecimal;
+import java.time.LocalDate;
+import java.util.Date;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -30,7 +32,16 @@ public class RouteEntity extends BaseEntity<Long> {
     private Double duration;
 
     @Column
+    private LocalDate fromDate;
+
+    @Column
+    private LocalDate toDate;
+
+    @Column
     private BigDecimal price;
+
+    @Column
+    private String icon;
 
     @OneToMany(mappedBy = "route", cascade = CascadeType.ALL)
     private Set<SpotEntity> spots = new HashSet<>();

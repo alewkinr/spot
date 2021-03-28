@@ -18,6 +18,12 @@ public class RouteDto {
 
     private String description;
 
+    private String icon;
+
+    private String fromDate;
+
+    private String toDate;
+
     private Double distance;
 
     private Double duration;

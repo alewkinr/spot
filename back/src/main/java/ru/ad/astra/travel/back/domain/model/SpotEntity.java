@@ -24,6 +24,12 @@ public class SpotEntity extends BaseEntity<Long> {
     @Column
     private Float longitude;
 
+    @Column
+    private String country;
+
+    @Column
+    private String city;
+
     @ManyToOne
     @JoinColumn(name = "route_id", nullable = false)
     private RouteEntity route;
