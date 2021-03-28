@@ -1,9 +1,5 @@
 import {Ionicons} from '@expo/vector-icons';
-import * as Font from 'expo-font';
-import * as SplashScreen from 'expo-splash-screen';
-import * as React from 'react';
 import {Asset} from "expo-asset";
-import { Ionicons } from "@expo/vector-icons";
 import * as Font from "expo-font";
 import * as SplashScreen from "expo-splash-screen";
 import * as React from "react"; 
@@ -13,7 +9,7 @@ export default function useCachedResources() {
     const [isLoadingComplete, setLoadingComplete] = React.useState(false);
 
     // Load any resources or data that we need prior to rendering the app
-    React.useEffect(async () => {
+    React.useEffect( () => {
         async function loadResourcesAndDataAsync() {
             try {
                 await SplashScreen.preventAutoHideAsync();
@@ -46,7 +42,7 @@ export default function useCachedResources() {
             }
         }
 
-        await loadResourcesAndDataAsync();
+         loadResourcesAndDataAsync();
     }, []);
 
     return isLoadingComplete;
