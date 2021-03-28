@@ -51,6 +51,15 @@ public class V1_BaseMigration implements Migration {
     }
 
     private void tags() {
+        List<String> photos = Arrays.asList(
+                "1.png",
+                "places/1.png",
+                "places/2.png",
+                "places/3.png",
+                "places/4.png",
+                "places/5.png",
+                "places/6.png"
+        );
         Iterator<RouteEntity> iterator = routesRepository.findAll().iterator();
         TagEntity prev = null;
         if (iterator.hasNext()) {
@@ -62,7 +71,7 @@ public class V1_BaseMigration implements Migration {
                 }
                 HashSet<RouteEntity> routes = new HashSet<>();
                 routes.add(route);
-                prev = tagsRepository.save(new TagEntity("TEST tag" + index, 0f, tagEntities, routes, "photo link"));
+                prev = tagsRepository.save(new TagEntity("TEST tag" + index, 0f, tagEntities, routes, photos.get(index)));
             }
         }
     }
