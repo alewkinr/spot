@@ -84,7 +84,7 @@ export const Main = () => {
         return (
 
 
-            <View {...props} style={{flex: 1}}>
+            <View {...props} style={{flex: 1, marginBottom: 10, }}>
 
                 <TouchableOpacity onPress={onPress} style={styles.containerTitle}>
                     <View style={styles.containerTitleAndText}>
