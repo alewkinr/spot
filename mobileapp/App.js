@@ -10,6 +10,7 @@ import { RoutesListStackNavigation } from "./navigation/RoutesListStackNavigatio
 import { FeedScreen } from "./screens/FeedSceen";
 import * as eva from "@eva-design/eva";
 import Colors from "./constants/Colors";
+import {MainScreen} from "./screens/MainScreen";
 import { ApplicationProvider } from "@ui-kitten/components";
 
 const Drawer = createDrawerNavigator();

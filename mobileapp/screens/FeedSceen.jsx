@@ -1,59 +1,52 @@
 import React from 'react';
-import {View, StyleSheet, Button, ScrollView} from 'react-native';
-import { Card, Text } from '@ui-kitten/components';
+import {View, StyleSheet, Button, ScrollView, SafeAreaView, Image} from 'react-native';
+import {Card, Text} from '@ui-kitten/components';
 import {useNavigation} from '@react-navigation/native';
 
 const FeedScreen = () => {
+
+
     return (
-        <View style={styles.container}>
-            <ScrollView>
-                <Card>
+        <SafeAreaView style={styles.container}>
+            <ScrollView horizontal={true}
+                        showsHorizontalScrollIndicator={false} style={{padding: 0, margin: 0}}>
+                <Card style={{height: 200}}>
+                    <Image style={{height: 100, width: 100}} source={require('../assets/img/1.png')}
+                           transition={false}/>
+                </Card>
+                <Card style={{height: 200}}>
                     <Text>
-                        The Maldives, officially the Republic of Maldives, is a small country in South Asia,
-                        located in the Arabian Sea of the Indian Ocean.
-                        It lies southwest of Sri Lanka and India, about 1,000 kilometres (620 mi) from the Asian continent
+                        sdasdasa
                     </Text>
                 </Card>
-                <Card>
+                <Card style={{height: 200}}>
                     <Text>
-                        The Maldives, officially the Republic of Maldives, is a small country in South Asia,
-                        located in the Arabian Sea of the Indian Ocean.
-                        It lies southwest of Sri Lanka and India, about 1,000 kilometres (620 mi) from the Asian continent
+                        t
                     </Text>
                 </Card>
-                <Card>
+                <Card style={{height: 200}}>
                     <Text>
-                        The Maldives, officially the Republic of Maldives, is a small country in South Asia,
-                        located in the Arabian Sea of the Indian Ocean.
-                        It lies southwest of Sri Lanka and India, about 1,000 kilometres (620 mi) from the Asian continent
+                        t
                     </Text>
                 </Card>
-                <Card>
+                <Card style={{height: 200}}>
                     <Text>
-                        The Maldives, officially the Republic of Maldives, is a small country in South Asia,
-                        located in the Arabian Sea of the Indian Ocean.
-                        It lies southwest of Sri Lanka and India, about 1,000 kilometres (620 mi) from the Asian continent
-                    </Text>
-                </Card>
-                <Card>
-                    <Text>
-                        The Maldives, officially the Republic of Maldives, is a small country in South Asia,
-                        located in the Arabian Sea of the Indian Ocean.
-                        It lies southwest of Sri Lanka and India, about 1,000 kilometres (620 mi) from the Asian continent
+                        t
                     </Text>
                 </Card>
             </ScrollView>
-        </View>
+        </SafeAreaView>
     )
 }
 const styles = StyleSheet.create({
         container: {
             flex: 1,
             width: '100%',
-            marginHorizontal: 'auto',
+            marginHorizontal: 0,
             backgroundColor: '#fff',
             alignItems: 'center',
             justifyContent: 'center',
+            padding: 0
         },
     }
 )
