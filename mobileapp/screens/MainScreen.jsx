@@ -1,4 +1,4 @@
-import React, {useState, useRef} from 'react';
+import React, {useState, useEffect} from 'react';
 import {
     Text,
     View,
@@ -16,122 +16,9 @@ import {Ionicons} from "@expo/vector-icons";
 import {Col, Row, Grid} from "react-native-easy-grid";
 import CheckBox from "../components/CheckBox";
 
-const Directions = [
-    {
-        id: 1,
-        title: 'Азия',
-        img: require("../assets/img/places/1.png"),
-        checked: false
-    },
-    {
-        id: 2,
-        title: 'Европа',
-        img: require("../assets/img/places/2.png"),
-        checked: false
-    },
-    {
-        id: 3,
-        title: 'Африка',
-        img: require("../assets/img/places/3.png"),
-        checked: false
-    },
-    {
-        id: 4,
-        title: 'Северная Америка',
-        img: require("../assets/img/places/4.png"),
-        checked: false
-    },
-    {
-        id: 5,
-        title: 'Южная Америка',
-        img: require("../assets/img/places/5.png"),
-        checked: false
-    },
-    {
-        id: 6,
-        title: 'Австралия',
-        img: require("../assets/img/places/6.png"),
-        checked: false
-    },
-]
-
-const Targets = [
-    {
-        id: 1,
-        title: 'Семья',
-        img: require("../assets/img/places/1.png"),
-        checked: false
-    },
-    {
-        id: 2,
-        title: 'Отдых',
-        img: require("../assets/img/places/2.png"),
-        checked: false
-    },
-    {
-        id: 3,
-        title: 'Бизнес',
-        img: require("../assets/img/places/3.png"),
-        checked: false
-    },
-    {
-        id: 4,
-        title: 'Тематический',
-        img: require("../assets/img/places/4.png"),
-        checked: false
-    },
-    {
-        id: 5,
-        title: 'Спорт',
-        img: require("../assets/img/places/5.png"),
-        checked: false
-    },
-]
-
-const Interesting = [
-    {
-        id: 1,
-        title: 'История',
-        img: require("../assets/img/places/1.png"),
-        checked: false
-    },
-    {
-        id: 2,
-        title: 'Природа',
-        img: require("../assets/img/places/2.png"),
-        checked: false
-    },
-    {
-        id: 3,
-        title: 'Вечеринки',
-        img: require("../assets/img/places/3.png"),
-        checked: false
-    },
-    {
-        id: 4,
-        title: 'Культура',
-        img: require("../assets/img/places/4.png"),
-        checked: false
-    },
-    {
-        id: 5,
-        title: 'Работа',
-        img: require("../assets/img/places/5.png"),
-        checked: false
-    },
-    {
-        id: 6,
-        title: 'Хобби',
-        img: require("../assets/img/places/6.png"),
-        checked: false
-    },
-]
-
 const MainScreen = () => {
     const navigation = useNavigation();
     const [searchField, setSearchField] = useState('')
-
-    const [state, setState] = useState(true)
 
     const [directions, setDirections] = useState([
         {
@@ -241,6 +128,16 @@ const MainScreen = () => {
             checked: false
         },
     ]);
+
+    const [showNext, setShowNext] = useState(false)
+
+    useEffect(() => {
+        const checkedDirectionsSum = directions.filter(i => i.checked === true).length
+        const checkedTargetsSum = targets.filter(i => i.checked === true).length
+        const checkedInterestsSum = interesting.filter(i => i.checked === true).length
+        const sum = checkedDirectionsSum + checkedTargetsSum + checkedInterestsSum
+        sum >= 3 ? setShowNext(true) : setShowNext(false)
+    }, [directions, targets, interesting])
 
     function changeDirections(id) {
         setDirections(directions.map(item => {
@@ -480,10 +377,29 @@ const MainScreen = () => {
                     </ScrollView>
 
                 </View>
-                <TouchableOpacity style={{flexDirection: 'row', alignItems: 'center', position: 'absolute', bottom: 30, right: 35, backgroundColor: '#BED600', paddingHorizontal: 18, paddingVertical: 12, borderRadius: 30}}>
-                    <Text style={{color: '#fff', fontSize: 16, fontFamily: 'SFProDisplayRegular', paddingRight: 10, fontWeight: '600'}}>Продолжить</Text>
+
+                {showNext &&
+                <TouchableOpacity style={{
+                    flexDirection: 'row',
+                    alignItems: 'center',
+                    position: 'absolute',
+                    bottom: 30,
+                    right: 35,
+                    backgroundColor: '#BED600',
+                    paddingHorizontal: 18,
+                    paddingVertical: 12,
+                    borderRadius: 30
+                }} onPress={() => navigation.navigate("Main")}>
+                    <Text style={{
+                        color: '#fff',
+                        fontSize: 16,
+                        fontFamily: 'SFProDisplayRegular',
+                        paddingRight: 10,
+                        fontWeight: '600'
+                    }}>Продолжить</Text>
                     <Ionicons name={'airplane'} size={20} color={'#fff'}/>
                 </TouchableOpacity>
+                }
             </View>
         </View>
     );
